@@ -1,0 +1,50 @@
+<div class="logo">Ys</div>
+<div class="demo">
+  <header class="demo-header">
+    <h1 class="demo-header__title">YsDashboard <span class="demo-header__subtitle">Spin / Speeder / Measure UI</span></h1>
+    <span class="demo-header__desc">An Angular UI component that can be used to dashboard and loading page. It allows you to change color, size, and label, so you can use it in different places with light or dark background.</span>
+  </header>
+  <section>
+    <h2 class="demo__title">UI Demo</h2>
+    <div class="demo__light">
+      <div class="demo__container">
+        <p class="demo__label">CPU Usage</p>
+        <ys-pie [size]="200" [percentage]="percentage" color="#4ECDC4" [label]="percentage">
+        </ys-pie>
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <button class="demo__button" (click)="add()">Add</button>
+          <button class="demo__button" (click)="reduce()">Minus</button>
+        </div>
+      </div>
+    </div>
+    <div class="demo__dark">
+      <div class="demo__container">
+        <p class="demo__label">CPU Usage</p>
+        <ys-pie [size]="200" [percentage]="percentage" color="#23a7d7" [label]="percentage">
+        </ys-pie>
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <button class="demo__button" (click)="add()">Add</button>
+          <button class="demo__button" (click)="reduce()">Minus</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2 class="demo__title">UI Usage</h2>
+    <pre><code class="language-html">&lt;ys-pie [size]=&quot;100&quot; [percentage]=&quot;20&quot; color=&quot;#23a7d7&quot; [label]=&quot;20&quot;&gt;&lt;/ys-pie&gt;</code></pre>
+    <h3>1. Change size</h3>
+    <div class="demo-usage">
+      <ys-pie [size]="100" [percentage]="20" color="#23a7d7" [label]="20"></ys-pie>
+      <ys-pie [size]="150" [percentage]="20" color="#23a7d7" [label]="20"></ys-pie>
+      <ys-pie [size]="200" [percentage]="20" color="#23a7d7" [label]="20"></ys-pie>
+    </div>
+    <h3>2. Change Color and Percentage</h3>
+    <div class="demo-usage">
+      <ys-pie [size]="150" [percentage]="0" color="#9E0B41" [label]="0"></ys-pie>
+      <ys-pie [size]="150" [percentage]="60" color="#CC3E18" [label]="60"></ys-pie>
+      <ys-pie [size]="150" [percentage]="100" color="#F0971C" [label]="100"></ys-pie>
+    </div>
+  </section>
+</div>
+
+

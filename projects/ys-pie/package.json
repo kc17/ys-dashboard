@@ -1,0 +1,16 @@
+{
+  "name": "ys-pie",
+  "version": "1.0.0",
+  "description": "Pie Component of YsDashboard",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YuShuanHsieh/ys-dashboard"
+  },
+  "homepage": "https://github.com/YuShuanHsieh/ys-dashboard#readme",
+  "license": "MIT",
+  "keywords": ["angular", "UI", "spinner", "measure"]
+}

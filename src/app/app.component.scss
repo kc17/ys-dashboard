@@ -1,0 +1,92 @@
+.logo {
+  font-size: 2.75em;
+  display: inline-block;
+  background-color: #4ECDC4;
+  padding: 10px 10px;
+  color: #FFFFFF;
+  border-radius: 5px;
+  font-weight: 200;
+  position: absolute;
+  top: 2.5px;
+  left: 5px;
+}
+
+.demo {
+  width: 60vw;
+  margin: auto;
+  color: #4A4857;
+}
+
+@media only screen and (max-width: 480px) {
+  .demo {
+    width: 95vw;
+  }
+}
+
+.demo-header {
+
+  .demo-header__title {
+    color: #4ECDC4;
+  }
+  .demo-header__subtitle {
+    font-size: 0.65em;
+  }
+  .demo-header__desc {
+    font-weight: 200;
+    line-height: 2em;
+  }
+}
+
+.demo__container{
+  border-radius: 5px;
+  padding: 0 10px 10px 10px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+  display: block;
+
+  .demo__label {
+    font-size: 14px;
+    padding: 10px 0 0 0 ;
+    font-weight: 200;
+    margin: 0;
+  }
+
+  .demo__button {
+    margin: 10px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background: none;
+  }
+}
+
+.demo__light, .demo__dark {
+  padding: 20px;
+  display: inline-block;
+}
+
+.demo__light {
+  background-color: #eef1f6;
+  .demo__label {
+    color: #6d6d6d;
+  }
+  .demo__container {
+    background-color: #FFFFFF;
+  }
+  .demo__button {
+    border: 1px solid #4ECDC4;
+    color: #4ECDC4;
+  }
+}
+
+.demo__dark {
+  background-color: #34383a;
+  .demo__label {
+    color: #CCCCCC;
+  }
+  .demo__container {
+    background-color: rgba(255,255,255,0.1);
+  }
+  .demo__button {
+    border: 1px solid #23a7d7;
+    color: #23a7d7;
+  }
+}
