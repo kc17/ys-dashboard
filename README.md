@@ -1,9 +1,9 @@
-# YsDashboard ![Code Coverage](https://codecov.io/gh/YuShuanHsieh/ys-dashboard/branch/master/graph/badge.svg) ![Build](https://api.travis-ci.org/YuShuanHsieh/ys-dashboard.svg?branch=master) ![Code Coverage](https://badge.fury.io/js/ys-pie.svg)
+# YsDashboard ![Code Coverage](https://codecov.io/gh/YuShuanHsieh/ys-dashboard/branch/master/graph/badge.svg) ![Build](https://api.travis-ci.org/YuShuanHsieh/ys-dashboard.svg?branch=master) [![Code Coverage](https://badge.fury.io/js/ys-pie.svg)](https://www.npmjs.com/package/ys-pie)
 This component is only for `angular N` framework, not for `angularJS`
- 
 [Demo Page](https://htmlpreview.github.io/?https://github.com/YuShuanHsieh/ys-dashboard/blob/master/dist/ys-dashboard/index.html) (We use htmlpreview to show the page, so it may need to take some time to load)
 
-## Pie / Spin / Speeder / Measure UI
+![ys-pie](https://storage.googleapis.com/ys-dashboard/ys-pie.png)
+## Pie / Spin / Speed / Measure UI
 ### Required Libs
 - @angular/core 
 - @angular/common
@@ -27,13 +27,14 @@ import { YsPieModule } from 'ys-pie';
 
 #### 2. Use component
 ```html
-<ys-pie [size]="100" [percentage]="20" color="#23a7d7" [label]="20"></ys-pie>
+<ys-pie [size]="100" [percentage]="20" [direction]="top" color="#23a7d7" [label]="20"></ys-pie>
 ```
 
 ### API Document
 | Attribute | Type | Description
 ---|---|---
-| size | integer number | Define the size of the component. It will change the height and width.
-| percentage | number (0-100) | The UI will be filled color based on percentage.
-| color | Hex Color Codes | Define the filled color.
+| size | integer number | The size of the component. It will change both height and width with same value.
+| percentage | number `(0-100)` | The UI will be filled color based on the percentage.
+| color | Hex Color Codes | Define a filled color.
 | label | string | The label will be showed on the center of UI
+| direction | string: `bottom` `top` | The start point will be `bottom` or `top`.
