@@ -12,5 +12,5 @@ before_install:
 install:
   - npm install
 script:
-  - npm run jest
-  - codecov -f coverage/*.json
+  - npx jest
+  - npx codecov -f coverage/*.json
