@@ -1,5 +1,8 @@
 # YsDashboard 
 This component is only for `angular N` framework, not for `angularJS`
+
+[Demo Page](https://htmlpreview.github.io/?https://github.com/YuShuanHsieh/ys-dashboard/blob/master/dist/ys-dashboard/index.html) (We use htmlpreview to show the page, so it may need to take some time to load)
+
 ## Pie / Spin / Speeder / Measure UI
 ### Required Libs
 - @angular/core 
@@ -7,7 +10,7 @@ This component is only for `angular N` framework, not for `angularJS`
 
 ### Usage
 #### 1. Import module
-```
+```typescript
 import { YsPieModule } from 'ys-pie';
 @NgModule({
   declarations: [
@@ -34,5 +37,3 @@ import { YsPieModule } from 'ys-pie';
 | percentage | number (0-100) | The UI will be filled color based on percentage.
 | color | Hex Color Codes | Define the filled color.
 | label | string | The label will be showed on the center of UI
-
-
