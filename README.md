@@ -1,6 +1,6 @@
-# YsDashboard 
+# YsDashboard ![Code Coverage](https://codecov.io/gh/YuShuanHsieh/ys-dashboard/branch/master/graph/badge.svg) ![Build](https://api.travis-ci.org/YuShuanHsieh/ys-dashboard.svg?branch=master) ![Code Coverage](https://badge.fury.io/js/ys-pie.svg)
 This component is only for `angular N` framework, not for `angularJS`
-
+ 
 [Demo Page](https://htmlpreview.github.io/?https://github.com/YuShuanHsieh/ys-dashboard/blob/master/dist/ys-dashboard/index.html) (We use htmlpreview to show the page, so it may need to take some time to load)
 
 ## Pie / Spin / Speeder / Measure UI
