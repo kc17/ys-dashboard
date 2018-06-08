@@ -6,26 +6,28 @@
   </header>
   <section>
     <h2 class="demo__title">UI Demo</h2>
+    <div>
+      <button class="demo__button" (click)="add()">Add</button>
+      <button class="demo__button" (click)="reduce()">Minus</button>
+      <button class="demo__button" (click)="changeColor()">Color</button>
+      <button class="demo__button" (click)="changeSize()">Size</button>
+    </div>
     <div class="demo__light">
       <div class="demo__container">
         <p class="demo__label">CPU Usage</p>
-        <ys-pie [size]="200" [percentage]="percentage" color="#4ECDC4" [label]="percentage">
-        </ys-pie>
         <div style="display: flex; align-items: center; justify-content: center;">
-          <button class="demo__button" (click)="add()">Add</button>
-          <button class="demo__button" (click)="reduce()">Minus</button>
+          <ys-pie [size]="size" [percentage]="percentage" [color]="color" [label]="percentage">
+          </ys-pie>
         </div>
       </div>
     </div>
     <div class="demo__dark">
       <div class="demo__container">
         <p class="demo__label">CPU Usage</p>
-        <ys-pie [size]="200" [percentage]="percentage" color="#23a7d7" [label]="percentage">
-        </ys-pie>
-        <div style="display: flex; align-items: center; justify-content: center;">
-          <button class="demo__button" (click)="add()">Add</button>
-          <button class="demo__button" (click)="reduce()">Minus</button>
-        </div>
+          <div style="display: flex; align-items: center; justify-content: center;">
+            <ys-pie [size]="size" [percentage]="percentage" [color]="color" [label]="percentage">
+            </ys-pie>
+          </div>
       </div>
     </div>
   </section>

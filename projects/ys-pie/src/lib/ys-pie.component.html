@@ -1,6 +1,6 @@
-<div class="ys-pie" [style.width.px]="size" [style.height.px]="size">
+<div class="ys-pie" [style.width.px]="_size" [style.height.px]="_size">
   <div class="ys-pie__container_center">
-    <span class="ys-pie__label" [class.active]="filledNumber !== 0" #label>{{labelInternal}}</span>
+    <span class="ys-pie__label" [class.active]="filledNumber !== 0" [style.fontSize.px]="fontSize">{{label}}</span>
   </div>
   <ng-container *ngFor="let piece of piePieces; index as i">
     <div class="ys-pie__piece" [ysRotate]="(15 * i) + startDegree" [class.active]=" i < filledNumber" #piece></div>

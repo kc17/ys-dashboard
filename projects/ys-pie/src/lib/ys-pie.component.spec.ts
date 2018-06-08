@@ -24,30 +24,55 @@ describe('YsPieComponent', () => {
     pieComponent = fixture.debugElement.query(By.css('ys-pie')).componentInstance as YsPieComponent;
   });
 
-  it('The size should equal to defined size: 100 px', () => {
+  it('The size should be changed based on setting', () => {
     expect(pieComponent.size).toBe(100);
+
+    component.size = 150;
+    fixture.detectChanges();
+    expect(pieComponent.size).toBe(150);
+
+    component.size = -50;
+    fixture.detectChanges();
+    expect(pieComponent.size).toBe(0);
   });
 
-  it('The color should equal to #23a7d7', () => {
+  it('The color should be changed based on setting', () => {
     expect(pieComponent.color).toBe('#23a7d7');
+
+    component.color = '#CCCCCC';
+    fixture.detectChanges();
+    expect(pieComponent.color).toBe('#CCCCCC');
   });
 
-  it('The filled number sould be equal to five', () => {
+  it('The range of filled number should be 0 to 100', () => {
     expect(pieComponent.filledNumber).toBe(5);
+
+    component.percentage = 60;
+    fixture.detectChanges();
+    expect(pieComponent.filledNumber).toBe(14);
+
+    component.percentage = 120;
+    fixture.detectChanges();
+    expect(pieComponent.filledNumber).toBe(24);
   });
 
   it('The piece number of pie should be 24', () => {
     expect(pieComponent.pieces.length).toBe(24);
   });
   it('The label should be 20', () => {
-    expect(pieComponent.labelInternal).toBe('20');
+    expect(pieComponent.label).toBe('20');
   });
 });
 
 @Component({
   selector: 'test-root',
   template: `
-    <ys-pie [size]="100" [percentage]="20" color="#23a7d7" [label]="'20'"></ys-pie>
+    <ys-pie [size]="size" [percentage]="percentage" [color]="color" [label]="label"></ys-pie>
   `
 })
-class TestComponent {}
+class TestComponent {
+  size: number = 100;
+  percentage: number = 20;
+  color: string = '#23a7d7';
+  label: string = '20';
+}

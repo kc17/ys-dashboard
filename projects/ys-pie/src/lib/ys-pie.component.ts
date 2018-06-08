@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, Directive, ViewChildren, ViewChild, QueryList, AfterViewInit} from '@angular/core';
+import { Component, OnInit, Input, ElementRef, Directive, ViewChildren, QueryList, AfterViewInit, ChangeDetectionStrategy, } from '@angular/core';
 
 export type Direction = 'bottom' | 'top';
 
@@ -16,59 +16,62 @@ export class RotateDirective implements OnInit{
 @Component({
   selector: 'ys-pie',
   templateUrl: './ys-pie.component.html',
-  styleUrls: ['./ys-pie.component.scss']
+  styleUrls: ['./ys-pie.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class YsPieComponent implements OnInit, AfterViewInit {
 
-  @Input() color: string = '#CCCCCC';
-  @Input() size: number = 200;
+  @Input()
+  set color(color: string) {
+    this._updateCssVariable(this._size, color);
+    this._color = color;
+  }
+  get color(): string {
+    return this._color;
+  }
   @Input()
   set direction(direction: Direction){
-    if(direction === 'bottom') {
-      this.startDegree = -180;
-    }
-    else {
-      this.startDegree = 0;
-    }
+    this.startDegree = (direction === 'bottom') ? -180 : 0;
   }
-  @Input()
-  set label(label: string) {
-    this.labelInternal = label;
-    this.labelRef.nativeElement.style.fontSize = `${this.size*0.3}px`;
-  };
-  get label():string {
-    return this.labelInternal;
-  }
+
   @Input()
   set percentage(percentage: number) {
-    this._validPercentage(percentage);
+    percentage = Math.max(0, Math.min(100, percentage));
     const number = Math.round(percentage/100*24);
-    this.updateTransition(this.filledNumber, number);
+    this._updateTransition(this.filledNumber, number);
     this.filledNumber = number;
   };
+  @Input()
+  set size(size: number) {
+    this._size = Math.max(0, size);
+    this._updateExistingSize(size);
+    this._updateCssVariable(size, this._color);
+  }
+  get size() :number {
+    return this._size;
+  }
+  @Input() label: string;
   @ViewChildren('piece') pieces: QueryList<ElementRef>;
-  @ViewChild('label') labelRef: ElementRef;
-  private cssVariable: string;
+  private cssVariable: string = '--size: SIZE_VALUEpx; --length: LENGTH_VALUEpx; --active: COLOR_VALUE;';
   private maxLineNumber: number = 24;
   filledNumber: number = 0;
   piePieces: Array<number> = new Array<number>(this.maxLineNumber);
-  labelInternal: string;
   startDegree: number = 0;
+  fontSize: number = 12;
+  _color: string = '#CCCCCC';
+  _size: number = 200;
 
   constructor(private element: ElementRef) { }
 
   ngOnInit() {
-    this.cssVariable = `--size: ${this.size/2}px; --length: ${this.size/10}px; --active:${this.color};`;
-    this.element.nativeElement.style.cssText = this.cssVariable;
+    this._updateCssVariable(this._size, this._color);
   }
 
   ngAfterViewInit(){
-    this.pieces.forEach((piece, index) => {
-      piece.nativeElement.style.transformOrigin = `${this.size/2}px ${this.size/2}px`;
-    });
+    this._updateExistingSize(this._size);
   }
 
-  updateTransition(currentNumber:number , nextNumber: number) {
+  _updateTransition(currentNumber:number , nextNumber: number) {
     if(!this.pieces) {
       return;
     }
@@ -85,9 +88,18 @@ export class YsPieComponent implements OnInit, AfterViewInit {
     });
   }
 
-  _validPercentage(percentage: number){
-    if(percentage > 100 || percentage < 0) {
-      throw new RangeError(`Percentage ${percentage} is not in range from 0 to 100`);
+  _updateCssVariable(size: number, color: string){
+    const variable = this.cssVariable.replace(/SIZE_VALUE/g, `${size/2}`).replace(/LENGTH_VALUE/g, `${size/10}`).replace(/COLOR_VALUE/g, color);
+    this.element.nativeElement.style.cssText = variable;
+  }
+
+  _updateExistingSize(size: number) {
+    this.fontSize = size * 0.3;
+    if(this.pieces) {
+      this.pieces.forEach((piece, index) => {
+        piece.nativeElement.style.transitionDelay = '';
+        piece.nativeElement.style.transformOrigin = `${size/2}px ${size/2}px`;
+      });
     }
   }
 }
